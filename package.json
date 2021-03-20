@@ -1,0 +1,28 @@
+{
+    "name": "amazon-bestsellers-crawler",
+    "version": "0.0.1",
+    "description": "Automatically extract the top selling items across all main categories.",
+    "dependencies": {
+        "@extra/recaptcha": "^4.2.1-next.587",
+        "@types/cheerio": "^0.22.24",
+        "apify": "^0.22.4",
+        "cheerio": "^1.0.0-rc.5",
+        "deathbycaptcha": "0.0.3",
+        "deathbycaptcha3": "^1.1.1",
+        "form-data": "^2.3.2",
+        "node-fetch": "^2.6.1",
+        "puppeteer": "^8.0.0",
+        "puppeteer-extra": "^3.1.18",
+        "puppeteer-extra-plugin-recaptcha": "^3.3.7"
+    },
+    "devDependencies": {
+        "@apify/eslint-config": "0.0.3",
+        "eslint": "^6.8.0"
+    },
+    "scripts": {
+        "start": "node src/main.js",
+        "lint": "eslint src/* --fix"
+    },
+    "author": "mihails@apify.com",
+    "license": "Apache Version 2.0, January 2004"
+}

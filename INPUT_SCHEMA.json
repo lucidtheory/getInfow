@@ -1,0 +1,16 @@
+{
+    "title": "Merchat Words Asin Search Crawler",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "proxy": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Select proxies to be used by your crawler. For more information, visit https://docs.apify.com/proxy",
+            "prefill": {
+                "useApifyProxy": true
+            },
+            "editor": "proxy"
+        }
+    }
+}
