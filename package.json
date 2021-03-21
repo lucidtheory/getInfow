@@ -1,18 +1,15 @@
 {
-    "name": "amazon-bestsellers-crawler",
+    "name": "getInfow",
     "version": "0.0.1",
-    "description": "Automatically extract the top selling items across all main categories.",
+    "description": "Extract results for a large list of asins",
     "dependencies": {
         "@extra/recaptcha": "^4.2.1-next.587",
-        "@types/cheerio": "^0.22.24",
-        "apify": "^0.22.4",
-        "cheerio": "^1.0.0-rc.5",
-        "deathbycaptcha": "0.0.3",
-        "deathbycaptcha3": "^1.1.1",
         "form-data": "^2.3.2",
         "node-fetch": "^2.6.1",
         "puppeteer": "^8.0.0",
         "puppeteer-extra": "^3.1.18",
+        "puppeteer-extra-plugin-adblocker": "^2.11.11",
+        "puppeteer-extra-plugin-block-resources": "^2.2.9",
         "puppeteer-extra-plugin-recaptcha": "^3.3.7"
     },
     "devDependencies": {
@@ -23,6 +20,6 @@
         "start": "node src/main.js",
         "lint": "eslint src/* --fix"
     },
-    "author": "mihails@apify.com",
+    "author": "ez",
     "license": "Apache Version 2.0, January 2004"
 }
