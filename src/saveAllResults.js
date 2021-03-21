@@ -4,11 +4,11 @@ const saveAllResults = async (page, pageNumber) => {
     // Grab all pieces of data per cell on this page of results
     console.log(`working on search page ${pageNumber}...`);
     const keywords = await page.$$eval('.keywords', keys => keys.map(key => key.innerText));
-    const searchRank = await page.$$eval('td[data-title="Search Rank"]', ranks => ranks.map(rank => rank.innerText));
-    const searchVolume = await page.$$eval('td[data-title="Amazon Search Volume"]', vols => vols.map(vol => vol.innerText));
-    const resultCount = await page.$$eval('td[data-title="Results"]', counts => counts.map(count => count.innerText));
-    const reviewCount = await page.$$eval('td[data-title="Reviews"]', counts => counts.map(count => count.innerText));
-    const amazonsChoice = await page.$$eval('td[data-title="Amazon\'s Choice"]', results => results.map(res => res.innerText));
+    const searchRank = await page.$$eval('td[data-title="Search Rank"]', ranks => ranks.map(rank => rank.innerText.replace(/,/g, '')));
+    const searchVolume = await page.$$eval('td[data-title="Amazon Search Volume"]', vols => vols.map(vol => vol.innerText.replace(/,/g, '')));
+    const resultCount = await page.$$eval('td[data-title="Results"]', counts => counts.map(count => count.innerText.replace(/,/g, '')));
+    const reviewCount = await page.$$eval('td[data-title="Reviews"]', counts => counts.map(count => count.innerText.replace(/,/g, '')));
+    const amazonsChoice = await page.$$eval('td[data-title="Amazon\'s Choice"]', results => results.map(res => res.innerText.replace(/,/g, '')));
 
     // append this page of results to the csv file
     for (let i = 0; i < keywords.length; i++) {

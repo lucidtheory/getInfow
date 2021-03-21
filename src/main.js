@@ -63,7 +63,8 @@ puppeteer.launch({ headless: true }).then(async (browser) => {
     // Get All the Necessary Info Per Asin
     for (let i = 0; i < bestAsins.length; i++) {
         console.log(`working on asin ${i + 1} of ${bestAsins.length}...`);
-        await page.goto(`https://www.merchantwords.com/asin/us/${bestAsins[i]}`);
+        await page.goto(`https://www.merchantwords.com/asin/us/${bestAsins[i]}/vol-1000-1000000/results-0-3000`);
+
         await saveAllResults(page, 1);
     }
 
