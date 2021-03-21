@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer-extra');
 const RecaptchaPlugin = require('puppeteer-extra-plugin-recaptcha');
 const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker');
-const ResourceBlockPlugin = require('puppeteer-extra-plugin-block-resources');
 const bestAsins = require('./bestAsins');
 const saveAllResults = require('./saveAllResults');
 
@@ -14,11 +13,39 @@ puppeteer.use(
         visualFeedback: true,
     }),
 );
+puppeteer.use(AdblockerPlugin({
+    blockTrackers: true,
+}));
+
+const blockedResources = [
+    // Assets
+    '*/favicon.ico',
+    '.css',
+    '.jpg',
+    '.jpeg',
+    '.png',
+    '.svg',
+    '.woff',
+
+    // Analytics and other fluff
+    '*.optimizely.com',
+    'everesttech.net',
+    'userzoom.com',
+    'doubleclick.net',
+    'googleadservices.com',
+    'adservice.google.com/*',
+    'connect.facebook.com',
+    'connect.facebook.net',
+    'sp.analytics.yahoo.com',
+];
+
 
 puppeteer.launch({ headless: true }).then(async (browser) => {
     // Handle Logging In
     console.log('initializing...');
     const page = await browser.newPage();
+    // eslint-disable-next-line
+    await page._client.send('Network.setBlockedURLs', { urls: blockedResources });
 
     await page.goto('https://www.merchantwords.com/login');
 

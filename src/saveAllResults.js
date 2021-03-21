@@ -20,9 +20,11 @@ const saveAllResults = async (page, pageNumber) => {
     // go to the next page if there is one and save those results
     const nextPage = await page.evaluate(() => document.querySelector('a[aria-label="Next"]'));
     if (nextPage) {
+        const element = await page.$('a[aria-label="Next"]');
+        const href = await page.evaluate(el => el.href, element);
         await Promise.all([
             page.waitForNavigation(),
-            page.click('a[aria-label="Next"]'),
+            page.goto(href),
         ]);
         await saveAllResults(page, pageNumber + 1);
     }
