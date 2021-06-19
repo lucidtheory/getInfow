@@ -13,7 +13,8 @@ const saveAllResults = async (page, pageNumber) => {
     // append this page of results to the csv file
     for (let i = 0; i < keywords.length; i++) {
         fs.appendFileSync(
-            'src/searchResults.csv', `${keywords[i]},${searchRank[i]},${searchVolume[i]},${resultCount[i]},${reviewCount[i]},${amazonsChoice[i]}\n`,
+            'src/results/christianResults.txt',
+            `${keywords[i]},${searchRank[i]},${searchVolume[i]},${resultCount[i]},${reviewCount[i]},${amazonsChoice[i]}\n`,
         );
     }
 
